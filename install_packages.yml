@@ -1,0 +1,9 @@
+---
+- name: Install Packages with yum
+  hosts: webservers
+  become: true
+  tasks:
+  - name: Install specific Packages
+    yum:
+      name: tree
+      state: installed 

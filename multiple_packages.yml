@@ -1,0 +1,10 @@
+---
+- hosts: webservers
+  become: true
+  tasks:
+  - name: Install packeges
+    yum:
+      name: ['git', 'make', 'gzip', 'wget', 'telnet']
+      state:  installed
+      
+

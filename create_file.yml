@@ -1,0 +1,19 @@
+---
+- name: This playbook is to create files or directory.
+  hosts: all
+  become: true
+  tasks:
+  - name: Creating files
+    file:
+      path: /home/ansadmin/fulucan
+      state: touch
+
+
+
+
+
+
+
+
+
+

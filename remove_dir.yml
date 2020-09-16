@@ -1,0 +1,8 @@
+---
+- name: This playbook creates a directory
+  hosts: all
+  tasks: 
+  - name: Creating a directory with ansadmin privilieges
+    file: 
+      path: /home/ansadmin/fulucanpath
+      state: absent

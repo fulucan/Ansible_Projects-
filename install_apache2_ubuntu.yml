@@ -1,0 +1,19 @@
+---
+- name: Install Apache2 on Ubuntu Managed Node
+  hosts: dbservers
+  become: true
+  gather_facts: true
+  tasks:
+  - name: Install Apache2 package
+    apt:
+      name: apache2
+      state: present
+    notify: start apache2 service
+
+  handlers:
+  - name: start apache2 service
+    service:
+      name: apache2
+      state: started
+
+

@@ -1,0 +1,36 @@
+---
+- name: Install packeges
+  hosts: all
+  become: true
+  tasks:
+  - name: Install httpd on Red Hat Family
+    yum:
+      name: httpd
+      state: installed
+    when: ansible_os_family == "RedHat"
+  - name: Start httpd service on Redhat Family
+    service:
+      name:  httpd
+      state: started
+    when: ansible_os_family == "RedHat"
+
+  - name: Install apache2 on Ubuntu Family
+    apt:
+      name: apache2
+      state: present
+    when: ansible_os_family == "Debian"
+
+  - name: Start apache2 on Debian Family
+    service:
+      name: apache2
+      state: started
+    when: ansible_os_family == "Debian"
+
+
+
+  - name: Copy index.html to managed nodes
+    copy:
+      src: /opt/ansible/index.html
+      dest: /var/www/html
+      mode: 0666
+

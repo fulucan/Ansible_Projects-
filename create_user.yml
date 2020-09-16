@@ -1,0 +1,10 @@
+---
+- name: This playbook is to create user in managed nodes.
+  hosts: all
+  become: true
+  vars_files:
+    - user.yml
+  tasks:
+  - name: Creating {{ user }} 
+    user: 
+      name: "{{ user }}"

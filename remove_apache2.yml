@@ -1,0 +1,16 @@
+---
+- name: Remove apache2 service
+  hosts: dbservers
+  become: true
+  tasks:
+  - name: Stopping service
+    service:
+       name: apache2
+       state: stopped
+    notify: Removing service 
+  handlers:
+  - name: Removing service
+    yum:
+       name: apache2
+       state: absent 
+
